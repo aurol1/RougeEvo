@@ -1,0 +1,119 @@
+{
+  "seed": 0,
+  "method": "complement",
+  "dataset_manifest": "synthetic-no-manifest",
+  "start_build": "starter",
+  "model": {
+    "backend": "hf",
+    "path": "synthetic-no-model",
+    "dtype": "float16",
+    "device_map": "balanced",
+    "attn_implementation": "sdpa",
+    "context_tokens": 8192,
+    "enable_thinking": false,
+    "batch_size": 4,
+    "batch_prefill_tokens": 8192
+  },
+  "budget": {
+    "development": 1500000,
+    "test": 6000000,
+    "tool_price": 256
+  },
+  "execution": {
+    "max_steps": 4,
+    "max_tokens": 1536,
+    "temperature": 0.0,
+    "top_p": 0.95,
+    "observation_chars": 2500,
+    "parallel_tasks": 4,
+    "max_error_rate": 0.5,
+    "reveal_expected": false,
+    "preview_chars": 4500,
+    "support_chars": 3000,
+    "training_trace_chars": 8000,
+    "training_cell_credit": true
+  },
+  "docker": {
+    "image": "rouge-spreadsheet:0.2",
+    "timeout_seconds": 120,
+    "memory": "2g",
+    "cpus": 1
+  },
+  "proposal": {
+    "max_tokens": 1200,
+    "diagnosis_tokens": 256,
+    "evidence_chars": 6000,
+    "repair_attempts": 1,
+    "temperature": 0.8
+  },
+  "search": {
+    "rounds": 10000,
+    "candidates": 1,
+    "batch_size": 6,
+    "confirm_size": 2,
+    "train_limit": 24,
+    "validation_limit": 8,
+    "archive_size": 16,
+    "archive_probability": 0.25,
+    "warmup_rounds": 6,
+    "exploration": 1.0,
+    "min_validation_gain": 0.0,
+    "max_relics": 0,
+    "disabled_actions": [],
+    "disabled_slots": [],
+    "screen_size": 2,
+    "screen_top_k": 2,
+    "validation_chunk_size": 4,
+    "pair_audit_probability": 1.0,
+    "max_seconds": 15900,
+    "panel_reuse_rounds": 2,
+    "screen_explore_probability": 1.0,
+    "adaptive_controller": false
+  },
+  "complement": {
+    "consumer_slots": [
+      "plan",
+      "edit",
+      "verify"
+    ],
+    "support_kinds": [
+      "column_profile",
+      "numeric_profile",
+      "layout_profile"
+    ],
+    "supports_per_project": 1,
+    "weak_capacity": 8,
+    "weak_ttl_rounds": 8,
+    "probe_projects": 2,
+    "completion_projects": 1,
+    "q_attempts": 1,
+    "explore_every": 3,
+    "min_interaction": 0.0,
+    "demand_aware": true,
+    "probe_budget_fraction": 0.15,
+    "response_guided": true,
+    "refinement_chars": 900,
+    "post_warmup_candidates": 2,
+    "selection_candidates": 2,
+    "max_project_attempts": 1,
+    "completion_budget_fraction": 0.5
+  },
+  "chemistry": {
+    "enabled": true,
+    "min_tasks": 6,
+    "prior_tasks": 4,
+    "solo_threshold": 0.1,
+    "pair_threshold": 0.1
+  },
+  "potions": {
+    "enabled": false,
+    "capacity": 0,
+    "start": [],
+    "drop_probability": 0.0
+  },
+  "reward": {
+    "cost_weight": 0.05,
+    "regression_weight": 0.1,
+    "cost_scope": "round"
+  }
+}
